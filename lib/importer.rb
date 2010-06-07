@@ -9,11 +9,11 @@ module Importer
     attr_accessor :object, :data
 
     def initialize(data)
-      @data = data
+      @data   = data
+      @object = initialize_object
     end
 
     def run
-      @object = initialize_object
       return false if before_import === false
       methods_to_run.each { |m| run_method(m) }
       save_object
